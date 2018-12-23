@@ -8,8 +8,8 @@ void counterR();
 void setup() {
   dc.init(10, 9, 6, 5, 3, 2);
 
-  //- 20181223: running these commands in the main program.  Unable to get it to compile here.
-  //- counterL and counterR need to be static functions to work.  Implement this later.
+  //- 20181223: running these commands in the main program because counterL and counterR need to be static
+  //- functions in order to reside in the .cpp file.  We can implement this later.
   attachInterrupt(digitalPinToInterrupt(dc.encoderL_global),counterL,RISING);
   attachInterrupt(digitalPinToInterrupt(dc.encoderR_global),counterR,RISING);
 }
