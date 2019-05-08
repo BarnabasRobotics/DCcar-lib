@@ -36,24 +36,24 @@ void counterA(){
   if(countA>=100){
     displayCounts();
 
-  //parameters (0 == a / b)   -----    (1 == b / a)
-  double AtoBcal = getCalculation(0);
-  double BtoAcal = getCalculation(1);
+    //parameters (0 == a / b)   -----    (1 == b / a)
+    double AtoBcal = getCalculation(0);
+    double BtoAcal = getCalculation(1);
 
 
-  
-    if(AtoBcal>maxCorrection||AtoBcal<minCorrection){
-      AoverB = AtoBcal;
-      Serial.println("Diffrence too great!");
-      Serial.println("Reset count and stoping for 5 seconds!");
-      halt(5);
-    }
-    else if(BtoAcal>maxCorrection||BtoAcal<minCorrection){
-      BoverA = BtoAcal;
-      Serial.println("Diffrence too great!");
-      Serial.println("Reset count and stoping for 5 seconds!");
-      halt(5);
-    }
+      //can change the correction up in the initial variables
+      if(AtoBcal>maxCorrection||AtoBcal<minCorrection){
+        AoverB = AtoBcal;
+        Serial.println("Diffrence too great!");
+        Serial.println("Reset count and stoping for 5 seconds!");
+        halt(5);
+      }
+      else if(BtoAcal>maxCorrection||BtoAcal<minCorrection){
+        BoverA = BtoAcal;
+        Serial.println("Diffrence too great!");
+        Serial.println("Reset count and stoping for 5 seconds!");
+        halt(5);
+      }
   }
   //Serial.println(countA);
 }
@@ -166,18 +166,18 @@ void goRight(){
 }
 
 void halt(int seconds){
+  restCount();
   Serial.println("going to halt!");
   seconds = seconds * 1000;
   analogWrite(Motor1A,0);
   digitalWrite(Motor1B,LOW);
   analogWrite(Motor2A,0);
   digitalWrite(Motor2B,LOW);
-  restCount();
   delay(seconds);
 }
 
 void restCount(){
-  float countA=1;
-  float countB=1;
+  countA=1;
+  countB=1;
 }
 
